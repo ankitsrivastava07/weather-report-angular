@@ -1,0 +1,64 @@
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+  
+          <div class="alert alert-danger text-center" role="alert" *ngIf = 'isError'>
+           {{errorMsg}}
+          </div>
+
+          <div class="alert alert-danger text-center" role="alert" *ngIf = 'isEmpty'>
+            Please enter City 
+           </div>
+
+          <h3 class="mb-4 pb-2 fw-normal">Check the weather forecast</h3>          
+
+          <div class="input-group rounded mb-3">
+            <input type="search" class="form-control rounded" name="city" required placeholder="City" [(ngModel)]='city' aria-label="Search"
+              aria-describedby="search-addon" />
+            <a (click)="getWeatherReport()" type="button" id ='check'>
+              <span class="input-group-text border-0 fw-bold">
+                Check!
+              </span>
+            </a>
+          </div>
+  
+          <div class="mb-4 pb-2">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="Celsius" [(ngModel)] ='reportType' checked value='Celsius'/>
+              <label class="form-check-label" for="inlineRadio1">Celsius</label>
+            </div>
+  
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" [(ngModel)] ='reportType' name = "Farenheit" value="Farenheit" />
+              <label class="form-check-label" for="inlineRadio2">Farenheit</label>
+            </div>
+          </div>
+  
+          <div class="card shadow-0 border">
+            <div class="card-body p-4">
+  
+              <h5 class="mb-1 sfw-normal">{{weather.city}}, {{weather.country}}</h5>
+              <p class="mb-2">Current temperature: <strong>{{weather.temp}}</strong></p>
+              <p>Feels like: <strong>{{weather.feels_like}}</strong></p>
+              <p>Max temperature : <strong>{{weather.temp_max}}</strong></p>
+              <p>Min temperature : <strong>{{weather.temp_min}}</strong></p>
+  
+              <div class="d-flex flex-row align-items-center">
+                <p class="mb-0 me-4">{{weather.description}}</p>
+                <i class="fas fa-cloud fa-3x" style="color: #eee;"></i>
+              </div>
+  
+              <div class="d-flex flex-row align-items-center">
+                <p class="mb-0 me-4"> Humidity: {{weather.humidity}}</p>
+                <i class="fas fa-cloud fa-3x" style="color: #eee;"></i>
+              </div>
+
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
